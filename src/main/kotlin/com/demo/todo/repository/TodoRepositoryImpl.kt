@@ -2,6 +2,7 @@ package com.demo.todo.repository
 
 import com.demo.todo.model.Todo
 import org.springframework.stereotype.Repository
+import java.util.*
 
 @Repository
 class TodoRepositoryImpl : TodoRepository {
@@ -14,5 +15,9 @@ class TodoRepositoryImpl : TodoRepository {
 
     override fun saveTodo(todo: Todo) {
         todos.add(todo)
+    }
+
+    override fun findTodo(id: UUID): Todo {
+        return todos.single { it.id == id }
     }
 }
